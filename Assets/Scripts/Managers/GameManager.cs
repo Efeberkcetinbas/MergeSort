@@ -7,11 +7,17 @@ public class GameManager : MonoBehaviour
 {
     public GameData gameData;
     public PlayerData playerData;
+    public ContainerData containerData;
+
 
     [SerializeField] private GameObject FailPanel;
     [SerializeField] private Ease ease;
 
-    public float InitialDifficultyValue;
+    [Header("Open/Close")]
+    [SerializeField] private GameObject[] open_close;
+
+    public Transform TempCube;
+
 
 
     private void Awake() 
@@ -23,12 +29,12 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        //EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
     }
 
     private void OnDisable()
     {
-        EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        //EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
     }
     
     void OnGameOver()
@@ -40,11 +46,21 @@ public class GameManager : MonoBehaviour
 
     }
     
+    public void OpenClose(GameObject[] gameObjects,bool canOpen)
+    {
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            if(canOpen)
+                gameObjects[i].SetActive(true);
+            else
+                gameObjects[i].SetActive(false);
+        }
+    }
 
     void OnIncreaseScore()
     {
         //gameData.score += 50;
-        DOTween.To(GetScore,ChangeScore,gameData.score+gameData.increaseScore,1f).OnUpdate(UpdateUI);
+        DOTween.To(GetScore,ChangeScore,gameData.score+gameData.increaseScore,0.25f).OnUpdate(UpdateUI);
     }
 
     private int GetScore()
@@ -67,7 +83,7 @@ public class GameManager : MonoBehaviour
     
     void ClearData()
     {
-
+        containerData.IsUp=false;
     }
 
     

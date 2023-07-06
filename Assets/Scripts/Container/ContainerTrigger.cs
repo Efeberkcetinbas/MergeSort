@@ -14,11 +14,13 @@ public class ContainerTrigger : Obstaceable
     internal override void DoAction(CubeTrigger Cube)
     {
         containerClick.Cubes.Add(Cube);
+        containerClick.CubeNumber++;
     }
 
     internal override void InteractionExit(CubeTrigger Cube)
     {
         Debug.Log("EXIT TRIGGER WORKS");
         containerClick.Cubes.Remove(Cube);
+        containerClick.CubeNumber--;
     }
 }
