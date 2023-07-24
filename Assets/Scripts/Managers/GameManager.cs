@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public GameData gameData;
     public PlayerData playerData;
-    public ContainerData containerData;
 
 
     [SerializeField] private GameObject FailPanel;
@@ -83,7 +82,7 @@ public class GameManager : MonoBehaviour
     
     void ClearData()
     {
-        containerData.IsUp=false;
+        
     }
 
     
