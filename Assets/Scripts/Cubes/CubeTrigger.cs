@@ -29,9 +29,11 @@ public class CubeTrigger : MonoBehaviour
                 Debug.Log("HIT : " + cubeProperties.Number);
                 //EventManager.Broadcast(GameEvent.OnMergeNumbers);
                 //EventManager.Broadcast(GameEvent.OnIncreaseScore);
-                //Destroy(cubeProperties.gameObject);
-                //Destroy(otherCube.gameObject);
+                
                 OnMergeNumbers(cubeProperties.Number);
+                Destroy(gameObject);
+                Destroy(otherCube.gameObject);
+                //Bu objenin basina ne gelirse clone da oyle oluyor.
             }
 
             else
