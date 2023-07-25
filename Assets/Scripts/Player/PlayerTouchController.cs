@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerTouchController : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class PlayerTouchController : MonoBehaviour
                         raycastHit.collider.transform.position=tempPosition;
                         touchIndex=0;
                         Debug.Log("Index 1ken buraya girdi");
+                        firstCube.DOLocalRotate(new Vector3(0,360,0),.25f,RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
+                        raycastHit.collider.transform.DOLocalRotate(new Vector3(0,360,0),.25f,RotateMode.FastBeyond360).SetRelative(true).SetEase(Ease.Linear);
                         return;
                     }
                     
