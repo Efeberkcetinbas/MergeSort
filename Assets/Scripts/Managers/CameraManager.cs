@@ -43,6 +43,7 @@ public class CameraManager : MonoBehaviour
         else
             Debug.Log($"Noise Component: {noise}");
     }
+    
     void OnHit()
     {
         Noise();
