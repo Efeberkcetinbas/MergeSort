@@ -5,6 +5,8 @@ using TMPro;
 public class CubeProperties : MonoBehaviour
 {
     public TextMeshPro[] NumberTexts;
+
+    public List<Color> colors=new List<Color>();
     public int Number;
 
 
@@ -29,4 +31,6 @@ public class CubeProperties : MonoBehaviour
         }
         
     }
+
+    
 }

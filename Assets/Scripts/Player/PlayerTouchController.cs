@@ -8,10 +8,18 @@ public class PlayerTouchController : MonoBehaviour
     private Transform cube;
     private Transform firstCube;
     private Vector3 tempPosition;
+
     private int touchIndex;
    
+    public GameData gameData;
 
     void Update()
+    {
+        if(!gameData.isGameEnd && gameData.canPlayerTouch)
+            CheckTouch();
+    }
+
+    private void CheckTouch()
     {
         if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
         {

@@ -15,4 +15,4 @@ MonoBehaviour:
   score: 0
   increaseScore: 0
   isGameEnd: 0
-  TempCube: {fileID: 0}
+  canPlayerTouch: 0

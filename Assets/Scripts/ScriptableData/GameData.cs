@@ -11,5 +11,6 @@ public class GameData : ScriptableObject
     public int increaseScore;
 
     public bool isGameEnd=false;
+    public bool canPlayerTouch=true;
 
 }
