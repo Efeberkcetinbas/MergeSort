@@ -7,6 +7,9 @@ public enum GameEvent
     //Player
     OnTargetHit,
 
+    //Merge
+    OnMerge,
+
 
     //Game Management
     OnIncreaseScore,
