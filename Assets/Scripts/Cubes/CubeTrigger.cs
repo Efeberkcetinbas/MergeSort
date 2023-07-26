@@ -12,6 +12,7 @@ public class CubeTrigger : MonoBehaviour
     public GameData gameData;
 
 
+
     private void Awake() 
     {
         cubeProperties=GetComponent<CubeProperties>();

@@ -24,14 +24,14 @@ public class CameraManager : MonoBehaviour
 
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnTargetHit,OnHit);
         EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.AddHandler(GameEvent.OnMergeTrigger,OnMergeTrigger);
     }
 
     private void OnDisable()
     {
-        EventManager.RemoveHandler(GameEvent.OnTargetHit,OnHit);
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.RemoveHandler(GameEvent.OnMergeTrigger,OnMergeTrigger);
     }
 
 
@@ -44,18 +44,9 @@ public class CameraManager : MonoBehaviour
             Debug.Log($"Noise Component: {noise}");
     }
     
-    void OnHit()
-    {
-        Noise();
-        ChangeFieldOfView(82,0.1f);
-    }
+   
 
-    private void Noise() 
-    {
-        noise.m_AmplitudeGain = amplitudeGain;
-        noise.m_FrequencyGain = frequencyGain;
-        StartCoroutine(ResetNoise(shakeTime));    
-    }
+   
 
     private IEnumerator ResetNoise(float duration)
     {
@@ -64,7 +55,17 @@ public class CameraManager : MonoBehaviour
         noise.m_FrequencyGain = 0;    
     }
 
-    
+    private void OnSelect()
+    {
+
+    }
+
+    private void OnMergeTrigger()
+    {
+        noise.m_AmplitudeGain = amplitudeGain;
+        noise.m_FrequencyGain = frequencyGain;
+        StartCoroutine(ResetNoise(shakeTime));    
+    }
 
     
 

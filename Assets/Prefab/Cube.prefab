@@ -1206,6 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 5672804607061643055}
   gameData: {fileID: 11400000, guid: 8c037c38592c18c4ca212e4d5f6b9a4b, type: 2}
+  parentCube: {fileID: 0}
 --- !u!114 &5672804606190093749
 MonoBehaviour:
   m_ObjectHideFlags: 0
