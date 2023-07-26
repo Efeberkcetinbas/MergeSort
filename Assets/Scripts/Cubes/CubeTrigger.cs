@@ -38,7 +38,12 @@ public class CubeTrigger : MonoBehaviour
 
             else
             {
-                Debug.Log("FAIL");
+                if(!gameData.isGameEnd)
+                {
+                    gameData.isGameEnd=true;
+                    Debug.Log("FAIL");
+                }
+                
             }
         }
         
