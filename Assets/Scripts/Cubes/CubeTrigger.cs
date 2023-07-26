@@ -48,8 +48,7 @@ public class CubeTrigger : MonoBehaviour
     {
         CubeProperties cloneCube=Instantiate(cube,transform.localPosition,Quaternion.identity);
         cloneCube.Number=value*2;
-        cloneCube.GetComponent<CubeColor>().OnMergeTrigger();
-        //EventManager.Broadcast(GameEvent.OnMergeTrigger);
+        
         for (int i = 0; i < cloneCube.NumberTexts.Length; i++)
         {
             cloneCube.NumberTexts[i].SetText((cloneCube.Number).ToString());

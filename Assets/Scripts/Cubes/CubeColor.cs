@@ -33,7 +33,7 @@ public class CubeColor : MonoBehaviour
         cubeProperties=GetComponent<CubeProperties>();
         meshRenderer=GetComponent<MeshRenderer>();
 
-        OnMergeTrigger();
+        Checking();
     }
 
     /*private void OnEnable() 
@@ -46,7 +46,7 @@ public class CubeColor : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnMergeTrigger,OnMergeTrigger);
     }*/
 
-    public void OnMergeTrigger()
+    public void Checking()
     {
         CheckNumber();
     }
