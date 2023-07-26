@@ -1048,6 +1048,7 @@ GameObject:
   - component: {fileID: 5672804607061643048}
   - component: {fileID: 5672804607061643055}
   - component: {fileID: 5672804607061643054}
+  - component: {fileID: 5672804606190093749}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Cube
@@ -1202,3 +1203,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 5672804607061643055}
   gameData: {fileID: 11400000, guid: 8c037c38592c18c4ca212e4d5f6b9a4b, type: 2}
+--- !u!114 &5672804606190093749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672804607061643046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ef9c3cf37ab034599f74152d29f6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeProperties: {fileID: 5672804607061643055}
+  CubeColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.22167933, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.90592486, b: 0, a: 1}
+  - {r: 0, g: 0.4739051, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.9315591, a: 1}
+  - {r: 1, g: 0.3596303, b: 0, a: 1}
+  - {r: 0.3773585, g: 0.22039407, b: 0.21537913, a: 1}
+  - {r: 0.21557963, g: 0.5566038, b: 0, a: 1}
+  - {r: 0.552711, g: 0.6509434, b: 0.33468318, a: 1}
+  - {r: 0.46226418, g: 0.05015131, b: 0.05015131, a: 1}

@@ -9,6 +9,7 @@ public enum GameEvent
 
     //Merge
     OnMerge,
+    OnMergeTrigger,
 
 
     //Game Management

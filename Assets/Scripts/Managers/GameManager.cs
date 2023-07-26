@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [Header("Open/Close")]
     [SerializeField] private GameObject[] open_close;
 
-    public Transform TempCube;
 
 
 
@@ -82,7 +81,7 @@ public class GameManager : MonoBehaviour
     
     void ClearData()
     {
-        
+        gameData.canPlayerTouch=true;
     }
 
     
