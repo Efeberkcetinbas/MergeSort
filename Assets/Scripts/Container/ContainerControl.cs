@@ -32,6 +32,7 @@ public class ContainerControl : MonoBehaviour
         {
             yield return new WaitForSeconds(.4f);
             blocks[i].SetActive(false);
+            EventManager.Broadcast(GameEvent.OnBreakWindow);
         }
     }
 }

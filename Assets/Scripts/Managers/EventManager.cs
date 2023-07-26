@@ -6,10 +6,15 @@ public enum GameEvent
 {
     //Player
     OnTargetHit,
+    OnSelect,
 
     //Merge
     OnMerge,
     OnMergeTrigger,
+    OnFail,
+    
+    //Container
+    OnBreakWindow,
 
 
     //Game Management

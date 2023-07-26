@@ -41,6 +41,8 @@ public class CubeTrigger : MonoBehaviour
                 if(!gameData.isGameEnd)
                 {
                     gameData.isGameEnd=true;
+                    EventManager.Broadcast(GameEvent.OnFail);
+                    //Buradan GameOvera baglarsin. Game Over Eventini de eklersin
                     Debug.Log("FAIL");
                 }
                 
@@ -53,6 +55,8 @@ public class CubeTrigger : MonoBehaviour
     {
         CubeProperties cloneCube=Instantiate(cube,transform.localPosition,Quaternion.identity);
         cloneCube.Number=value*2;
+        cloneCube.GetComponent<CubeParticle>().ExplosionParticle.Play();
+        EventManager.Broadcast(GameEvent.OnMergeTrigger);
         
         for (int i = 0; i < cloneCube.NumberTexts.Length; i++)
         {

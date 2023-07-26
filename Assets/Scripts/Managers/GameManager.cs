@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     void ClearData()
     {
         gameData.canPlayerTouch=true;
+        gameData.isGameEnd=false;
     }
 
     
