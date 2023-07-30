@@ -30,7 +30,8 @@ public class ContainerControl : MonoBehaviour
     {
         for (int i = 0; i < blocks.Count; i++)
         {
-            yield return new WaitForSeconds(.4f);
+            //0.4 duruma gore direk indirebilirsin veya aralikli sureler ile
+            yield return new WaitForSeconds(0.4f);
             blocks[i].SetActive(false);
             EventManager.Broadcast(GameEvent.OnBreakWindow);
         }

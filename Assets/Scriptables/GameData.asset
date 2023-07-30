@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   increaseScore: 1
-  RequirementContainerNumber: 1
-  SuccessContainerNumber: 1
-  LevelNumberIndex: 7
+  RequirementContainerNumber: 3
+  SuccessContainerNumber: 3
+  LevelNumberIndex: 1
   isGameEnd: 1
   canPlayerTouch: 0

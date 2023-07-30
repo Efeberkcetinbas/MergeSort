@@ -52,7 +52,15 @@ public class ContainerTrigger : Interactable
 
             else
             {
-                Debug.Log("CUBE NUMBER : " + cube.cubeProperties.Number);
+                if(!gameData.isGameEnd)
+                {
+                    gameData.isGameEnd=true;
+                    EventManager.Broadcast(GameEvent.OnFail);
+                    //Buradan GameOvera baglarsin. Game Over Eventini de eklersin
+                    Debug.Log("FAIL");
+                }
+                
+                
             }
         }
         

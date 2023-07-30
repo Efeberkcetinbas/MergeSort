@@ -127,7 +127,14 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            Debug.Log("NOT WORKING");
+            if(!gameData.isGameEnd)
+            {
+                gameData.isGameEnd=true;
+                EventManager.Broadcast(GameEvent.OnFail);
+                //Buradan GameOvera baglarsin. Game Over Eventini de eklersin
+                Debug.Log("FAIL");
+            }
+            //Debug.Log("NOT WORKING");
         }
     }
 
