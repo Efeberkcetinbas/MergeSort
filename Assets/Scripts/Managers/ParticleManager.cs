@@ -6,6 +6,8 @@ public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private List<ParticleSystem> pointParticles=new List<ParticleSystem>();
 
+    [SerializeField] private ParticleSystem successExplosion;
+
 
     private void PlayPointParticles()
     {
@@ -14,4 +16,6 @@ public class ParticleManager : MonoBehaviour
             pointParticles[i].Play();
         }
     }
+
+    
 }

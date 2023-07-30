@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   increaseScore: 0
+  RequirementContainerNumber: 3
+  SuccessContainerNumber: 0
   isGameEnd: 0
   canPlayerTouch: 0

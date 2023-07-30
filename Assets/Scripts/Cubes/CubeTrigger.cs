@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class CubeTrigger : MonoBehaviour
 {
-    private CubeProperties cubeProperties;
+    internal CubeProperties cubeProperties;
 
     [SerializeField] private CubeProperties cube;
 
@@ -27,7 +27,7 @@ public class CubeTrigger : MonoBehaviour
         {
             if(cubeProperties.Number==otherCube.Number)
             {
-                Debug.Log("HIT : " + cubeProperties.Number);
+                //Debug.Log("HIT : " + cubeProperties.Number);
                 //EventManager.Broadcast(GameEvent.OnMergeNumbers);
                 //EventManager.Broadcast(GameEvent.OnIncreaseScore);
                 
@@ -44,7 +44,7 @@ public class CubeTrigger : MonoBehaviour
                     gameData.isGameEnd=true;
                     EventManager.Broadcast(GameEvent.OnFail);
                     //Buradan GameOvera baglarsin. Game Over Eventini de eklersin
-                    Debug.Log("FAIL");
+                    //Debug.Log("FAIL");
                 }
                 
             }

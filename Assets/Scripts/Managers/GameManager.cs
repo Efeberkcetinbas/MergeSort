@@ -23,16 +23,23 @@ public class GameManager : MonoBehaviour
         ClearData();
     }
 
+    private void Start() 
+    {
+        ChangeContainerNumber();
+    }
+
     
 
     private void OnEnable()
     {
         //EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        EventManager.AddHandler(GameEvent.OnCheckContainer,OnCheckContainer);
     }
 
     private void OnDisable()
     {
         //EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        EventManager.RemoveHandler(GameEvent.OnCheckContainer,OnCheckContainer);
     }
     
     void OnGameOver()
@@ -76,13 +83,37 @@ public class GameManager : MonoBehaviour
         EventManager.Broadcast(GameEvent.OnUIUpdate);
     }
 
-    
+    //Her Levelde
+    private void ChangeContainerNumber()
+    {
+        gameData.RequirementContainerNumber=FindObjectOfType<LevelRequirementContainer>().RequirementContainerNumber;
+    }
+
+    private void OnCheckContainer()
+    {
+        StartCoroutine(CheckingContainer());
+    }
+
+    private IEnumerator CheckingContainer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(gameData.SuccessContainerNumber==gameData.RequirementContainerNumber)
+        {
+            Debug.Log("SUCCESSFULL");
+        }
+
+        else
+        {
+            Debug.Log("NOT WORKING");
+        }
+    }
 
     
     void ClearData()
     {
         gameData.canPlayerTouch=true;
         gameData.isGameEnd=false;
+        gameData.SuccessContainerNumber=0;
     }
 
     

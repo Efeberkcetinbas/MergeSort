@@ -11,6 +11,7 @@ public enum GameEvent
     //Merge
     OnMerge,
     OnMergeTrigger,
+    OnCheckContainer,
     OnFail,
     
     //Container
