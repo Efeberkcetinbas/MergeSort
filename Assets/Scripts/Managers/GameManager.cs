@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Open/Close")]
     [SerializeField] private GameObject[] closeGameObjects;
+    [SerializeField] private GameObject[] openGameObjects;
 
     [Header("Game Ending")]
     [SerializeField] private GameObject successPanel;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() 
     {
-        
+        OpenClose(openGameObjects,true);
     }
 
     
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
         gameData.canPlayerTouch=true;
         gameData.isGameEnd=false;
         gameData.SuccessContainerNumber=0;
+        OpenClose(openGameObjects,true);
         //ChangeContainerNumber();
         CleanMergeCubes();
 
