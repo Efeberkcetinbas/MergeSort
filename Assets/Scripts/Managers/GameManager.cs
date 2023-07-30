@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() 
     {
-        ChangeContainerNumber();
+        
     }
 
     
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnFail,OnFail);
         EventManager.AddHandler(GameEvent.OnFailUI,OnFailUI);
         EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
     }
 
     private void OnDisable()
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnFail,OnFail);
         EventManager.RemoveHandler(GameEvent.OnFailUI,OnFailUI);
         EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
     }
     
     
@@ -103,9 +105,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CheckingContainer());
     }
 
-    private IEnumerator CheckingContainer()
+    private void OnMerge()
     {
         ChangeContainerNumber();
+    }
+
+    private IEnumerator CheckingContainer()
+    {
         yield return new WaitForSeconds(0.1f);
         if(gameData.SuccessContainerNumber==gameData.RequirementContainerNumber)
         {
