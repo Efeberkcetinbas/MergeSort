@@ -16,5 +16,6 @@ MonoBehaviour:
   increaseScore: 0
   RequirementContainerNumber: 3
   SuccessContainerNumber: 0
+  LevelNumberIndex: 1
   isGameEnd: 0
-  canPlayerTouch: 0
+  canPlayerTouch: 1

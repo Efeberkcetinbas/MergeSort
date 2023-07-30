@@ -13,7 +13,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Ease ease;
 
     [Header("Open/Close")]
-    [SerializeField] private GameObject[] open_close;
+    [SerializeField] private GameObject[] closeGameObjects;
+
+    [Header("Game Ending")]
+    [SerializeField] private GameObject successPanel;
+    [SerializeField] private GameObject failPanel;
+
+    public List<GameObject> destroyGameObjects=new List<GameObject>();
 
 
 
@@ -34,22 +40,25 @@ public class GameManager : MonoBehaviour
     {
         //EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.AddHandler(GameEvent.OnCheckContainer,OnCheckContainer);
+        EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.AddHandler(GameEvent.OnSuccessUI,OnSuccessUI);
+        EventManager.AddHandler(GameEvent.OnFail,OnFail);
+        EventManager.AddHandler(GameEvent.OnFailUI,OnFailUI);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     private void OnDisable()
     {
         //EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.RemoveHandler(GameEvent.OnCheckContainer,OnCheckContainer);
+        EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.RemoveHandler(GameEvent.OnSuccessUI,OnSuccessUI);
+        EventManager.RemoveHandler(GameEvent.OnFail,OnFail);
+        EventManager.RemoveHandler(GameEvent.OnFailUI,OnFailUI);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
     
-    void OnGameOver()
-    {
-        FailPanel.SetActive(true);
-        FailPanel.transform.DOScale(Vector3.one,1f).SetEase(ease);
-        playerData.playerCanMove=false;
-        gameData.isGameEnd=true;
-
-    }
+    
     
     public void OpenClose(GameObject[] gameObjects,bool canOpen)
     {
@@ -96,16 +105,74 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CheckingContainer()
     {
+        ChangeContainerNumber();
         yield return new WaitForSeconds(0.1f);
         if(gameData.SuccessContainerNumber==gameData.RequirementContainerNumber)
         {
-            Debug.Log("SUCCESSFULL");
+            if(!gameData.isGameEnd)
+            {
+                Debug.Log("SUCCESSFULL");
+                EventManager.Broadcast(GameEvent.OnSuccess);
+                gameData.isGameEnd=true;
+            }
+            
         }
 
         else
         {
             Debug.Log("NOT WORKING");
         }
+    }
+
+    private void OnNextLevel()
+    {
+        OpenClose(closeGameObjects,false);
+        gameData.canPlayerTouch=true;
+        gameData.isGameEnd=false;
+        gameData.SuccessContainerNumber=0;
+        //ChangeContainerNumber();
+        CleanMergeCubes();
+
+    }
+
+    private void CleanMergeCubes()
+    {
+        for (int i = 0; i < destroyGameObjects.Count; i++)
+        {
+            Destroy(destroyGameObjects[i]);
+        }
+
+        destroyGameObjects.Clear();
+    }
+
+    private void OnSuccess()
+    {
+        StartCoroutine(CallUIEvent(GameEvent.OnSuccessUI));
+    }
+
+    private void OnFail()
+    {
+        StartCoroutine(CallUIEvent(GameEvent.OnFailUI));
+    }
+
+    private IEnumerator CallUIEvent(GameEvent gameEvent)
+    {
+        yield return new WaitForSeconds(1);
+        EventManager.Broadcast(gameEvent);
+    }
+
+    private void OnSuccessUI()
+    {
+        successPanel.SetActive(true);
+        successPanel.transform.localScale=Vector3.zero;
+        successPanel.transform.DOScale(Vector3.one,0.5f);
+    }
+
+    private void OnFailUI()
+    {
+        failPanel.SetActive(true);
+        failPanel.transform.localScale=Vector3.zero;
+        failPanel.transform.DOScale(Vector3.one,0.5f);
     }
 
     

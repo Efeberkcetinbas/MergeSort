@@ -10,6 +10,8 @@ public class ContainerTrigger : Interactable
 
     public GameData gameData;
 
+    private int oneCube=1;
+
     private void Start() 
     {
         boxCollider=GetComponent<BoxCollider>();
@@ -30,9 +32,20 @@ public class ContainerTrigger : Interactable
 
     internal override void DoAction(CubeTrigger cube)
     {
+        //Bu sayede istedigi yere istedigi kadar koyar
         if(!gameData.isGameEnd)
         {
-            if(requirementNumber==cube.cubeProperties.Number)
+            /*if(requirementNumber==cube.cubeProperties.Number)
+            {
+                gameData.SuccessContainerNumber++;
+            }
+
+            else
+            {
+                Debug.Log("CUBE NUMBER : " + cube.cubeProperties.Number);
+            }*/
+
+            if(oneCube==1)
             {
                 gameData.SuccessContainerNumber++;
             }

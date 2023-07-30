@@ -12,7 +12,6 @@ public enum GameEvent
     OnMerge,
     OnMergeTrigger,
     OnCheckContainer,
-    OnFail,
     
     //Container
     OnBreakWindow,
@@ -20,6 +19,10 @@ public enum GameEvent
 
     //Game Management
     OnIncreaseScore,
+    OnSuccess,
+    OnSuccessUI,
+    OnFail,
+    OnFailUI,
     OnUIUpdate,
     OnUIGameOver,
     OnNextLevel,

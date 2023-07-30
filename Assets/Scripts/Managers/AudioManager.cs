@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip GameLoop,BuffMusic;
-    public AudioClip MergeSound,GameOverSound,BreakeableSound,FailSound,SelectSound;
+    public AudioClip MergeSound,GameOverSound,BreakeableSound,FailSound,SuccessSound,SelectSound,NextLevelSound;
 
     AudioSource musicSource,effectSource;
 
@@ -26,7 +26,9 @@ public class AudioManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnMergeTrigger,OnMergeTrigger);
         EventManager.AddHandler(GameEvent.OnBreakWindow,OnBreakWindow);
         EventManager.AddHandler(GameEvent.OnFail,OnFail);
+        EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
         EventManager.AddHandler(GameEvent.OnSelect,OnSelect);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
     private void OnDisable() 
     {
@@ -34,7 +36,9 @@ public class AudioManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnMergeTrigger,OnMergeTrigger);
         EventManager.RemoveHandler(GameEvent.OnBreakWindow,OnBreakWindow);
         EventManager.RemoveHandler(GameEvent.OnFail,OnFail);
+        EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
         EventManager.RemoveHandler(GameEvent.OnSelect,OnSelect);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     
@@ -59,9 +63,19 @@ public class AudioManager : MonoBehaviour
         effectSource.PlayOneShot(FailSound);
     }
 
+    private void OnSuccess()
+    {
+        effectSource.PlayOneShot(SuccessSound);
+    }
+
     private void OnSelect()
     {
         effectSource.PlayOneShot(SelectSound);
+    }
+
+    private void OnNextLevel()
+    {
+        effectSource.PlayOneShot(NextLevelSound);
     }
 
 

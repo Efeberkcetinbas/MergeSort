@@ -11,6 +11,7 @@ public class GameData : ScriptableObject
     public int increaseScore;
     public int RequirementContainerNumber;
     public int SuccessContainerNumber;
+    public int LevelNumberIndex=1;
 
     public bool isGameEnd=false;
     public bool canPlayerTouch=true;

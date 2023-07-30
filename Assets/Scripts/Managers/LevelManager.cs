@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     
     public List<GameObject> levels;
 
+    public GameData gameData;
+
     private void Start()
     {
         LoadLevel();
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("LevelNumber", levelIndex + 1);
         PlayerPrefs.SetInt("RealLevel", PlayerPrefs.GetInt("RealLevel", 0) + 1);
+        gameData.LevelNumberIndex++;
         EventManager.Broadcast(GameEvent.OnNextLevel);
         LoadLevel();
     }

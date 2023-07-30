@@ -9,13 +9,23 @@ public class CubeTrigger : MonoBehaviour
 
     [SerializeField] private CubeProperties cube;
 
+    private CubeProperties cloneCube;
+
     public GameData gameData;
+
+    private GameManager gameManager;
 
 
 
     private void Awake() 
     {
         cubeProperties=GetComponent<CubeProperties>();
+    }
+
+    private void Start() 
+    {
+        gameManager=FindObjectOfType<GameManager>();
+        
     }
 
     private void OnCollisionEnter(Collision other) 
@@ -44,7 +54,7 @@ public class CubeTrigger : MonoBehaviour
                     gameData.isGameEnd=true;
                     EventManager.Broadcast(GameEvent.OnFail);
                     //Buradan GameOvera baglarsin. Game Over Eventini de eklersin
-                    //Debug.Log("FAIL");
+                    Debug.Log("FAIL");
                 }
                 
             }
@@ -57,6 +67,7 @@ public class CubeTrigger : MonoBehaviour
         CubeProperties cloneCube=Instantiate(cube,transform.localPosition,Quaternion.identity);
         cloneCube.Number=value*2;
         cloneCube.GetComponent<CubeParticle>().ExplosionParticle.Play();
+        gameManager.destroyGameObjects.Add(cloneCube.gameObject);
         EventManager.Broadcast(GameEvent.OnMergeTrigger);
         
         for (int i = 0; i < cloneCube.NumberTexts.Length; i++)
