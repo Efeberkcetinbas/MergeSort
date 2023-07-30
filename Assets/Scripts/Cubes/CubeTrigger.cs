@@ -67,6 +67,8 @@ public class CubeTrigger : MonoBehaviour
         CubeProperties cloneCube=Instantiate(cube,transform.localPosition,Quaternion.identity);
         cloneCube.Number=value*2;
         cloneCube.GetComponent<CubeParticle>().ExplosionParticle.Play();
+        EventManager.Broadcast(GameEvent.OnIncreaseScore);
+        cloneCube.transform.DOScale(Vector3.one,0.1f).OnComplete(()=>cloneCube.transform.DOScale(new Vector3(0.8f,0.8f,0.8f),0.1f));
         gameManager.destroyGameObjects.Add(cloneCube.gameObject);
         EventManager.Broadcast(GameEvent.OnMergeTrigger);
         
