@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Ending")]
     [SerializeField] private GameObject successPanel;
+    [SerializeField] private List<GameObject> stars=new List<GameObject>();
+    [SerializeField] private Transform successButton;
     [SerializeField] private GameObject failPanel;
 
     public List<GameObject> destroyGameObjects=new List<GameObject>();
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
         gameData.isGameEnd=false;
         gameData.SuccessContainerNumber=0;
         OpenClose(openGameObjects,true);
+        ResetScaleStar();
         //ChangeContainerNumber();
         CleanMergeCubes();
 
@@ -180,7 +183,35 @@ public class GameManager : MonoBehaviour
     {
         successPanel.SetActive(true);
         successPanel.transform.localScale=Vector3.zero;
-        successPanel.transform.DOScale(Vector3.one,0.5f);
+        
+        successPanel.transform.DOScale(Vector3.one,0.5f).OnComplete(()=>{
+          successButton.DOScale(Vector3.one*1.5f,0.2f).OnComplete(()=>successButton.DOScale(Vector3.one,0.2f));  
+          StartCoroutine(StarScale());
+        });
+    }
+
+    private IEnumerator StarScale()
+    {
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            stars[i].transform.DOScale(Vector3.one,0.2f);
+        }
+
+        
+    }
+
+    private void ResetScaleStar()
+    {
+        successButton.localScale=Vector3.zero;
+        successButton.gameObject.SetActive(false);
+
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].transform.localScale=Vector3.zero;
+            stars[i].gameObject.SetActive(false);
+        }
     }
 
     private void OnFailUI()

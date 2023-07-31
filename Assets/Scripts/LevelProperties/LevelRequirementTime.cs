@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class LevelRequirementTime : MonoBehaviour
 {
-    public int RequirementTime;
+    public float RequirementTime;
 }
